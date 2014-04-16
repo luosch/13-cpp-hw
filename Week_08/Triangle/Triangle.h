@@ -61,7 +61,7 @@ class IsoscelesTriangle: virtual public Triangle {
     }
     void print() {
         ssort(l1, l2, l3);
-        if (l1 == l2 || l2 == l3) {
+        if ((l1+l2) <= l3 && (l1 == l2 || l2 == l3)) {
             cout << "It is a IsoscelesTriangle 0-0" << endl;
         } else {
             cout << "It is not a IsoscelesTriangle  =-=" << endl;
@@ -75,7 +75,7 @@ class RightTriangle: virtual public Triangle {
     }
     void print() {
         ssort(l1, l2, l3);
-        if (l1*l1+l2*l2 == l3*l3) {
+        if ((l1+l2) <= l3 && l1*l1+l2*l2 == l3*l3) {
             cout << "It is a RightTriangle 0-0" << endl;
         } else {
             cout << "It is not a RightTriangle  =-=" << endl;
