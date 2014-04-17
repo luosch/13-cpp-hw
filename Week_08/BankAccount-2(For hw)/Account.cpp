@@ -1,49 +1,59 @@
 // Copyright 2014 lsich.com
 #include "Account.h"
-#include <cstdio>
 #include <string>
+#include <cstdio>
 using std::string;
 int Account::_total_account = 0;
 Account::Account() {
-	_id = 0;
-	_balance = 0;
-	_valid = 0;
-	_total_account++;
-}    
+    _valid = 0;
+    _balance = _id = 0;
+    _total_account++;
+}
 Account::~Account() {
-	_total_account--;
-}    
-int Account::id() const {return _id;}    
-double Account::balance() const {return _balance;}
-bool Account::valid() const {return _valid;}
-std::string Account::profile() const {
-    char res[40];
-    snprintf(res, sizeof(res), "ID:%d\nBALANCE:%.6lf\nVALID:N\n", _id, _balance);
-    return res;
+    _total_account--;
+}
+int Account::id() const {
+    return _id;
+}
+double Account::balance() const {
+    return _balance;
+}
+bool Account::valid() const {
+    return _valid;
+}
+string Account::profile() const {
+    string ress;
+    char aaa[100];
+    snprintf(aaa, sizeof(aaa), "%d", _id);
+    ress += "ID:" + string(aaa) + "\n";
+    snprintf(aaa, sizeof(aaa), "%.6lf", _balance);
+    ress += "BALANCE:" + string(aaa) + "\n";
+    ress += "VALID:" + string(valid() ? "Y" : "N") + "\n";
+    return ress;
 }
 void Account::reset() {
     _balance = 0;
-    _valid = 0;
 }
 void Account::settlement() {
-    deposit(_balance*0.02);
+    _balance*=1.02;    
 }
-bool Account::deposit(const double &n1n) {
-    if (n1n < 0) {
-        return 0;
-	} else {
-	   	_balance+=n1n;
-		return 1; 
-    }    
-}    
-bool Account::draw(const double &n1n) {
-    if (n1n < 0 || _balance-n1n < 0.01 ) {
-        return 0;
-	} else {
-	   	_balance-=n1n;
-		return 1; 
+bool Account::deposit(const double &num) {
+    if (num >= 0) {
+        _balance += num;
+        return 1;
+    } else {
+        return false;
     }
-}    
-int Account::get_total_account() {
-	return _total_account;
 }
+bool Account::draw(const double &num) {
+    if (num >= 0 && _balance - num >= 0.01) {
+        _balance -= num;
+        return 1;
+    } else {
+        return 0;
+    }
+}
+int Account::get_total_account() {
+    return _total_account;
+}
+

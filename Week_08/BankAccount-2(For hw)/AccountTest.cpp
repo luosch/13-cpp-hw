@@ -1,5 +1,6 @@
 // Copyright 2014 lsich.com
 #include <iostream>
+#include <cstdio>
 #include "Bank.h"
 #include "Account.h"
 #include "PersonalAccount.h"
@@ -13,6 +14,7 @@ void display_count() {
 }
  
 int main() {
+  //freopen("in.txt", "r", stdin);
   display_count();
   if (true) {
     Account a0, a1, a2;
