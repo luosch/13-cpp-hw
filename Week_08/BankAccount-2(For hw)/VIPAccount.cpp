@@ -1,3 +1,4 @@
+// Copyright 2014 lsich.com
 #include "VIPAccount.h"
 #include <string>
 #include <cstdio>

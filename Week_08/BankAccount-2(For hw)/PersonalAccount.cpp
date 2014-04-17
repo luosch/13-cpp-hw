@@ -1,3 +1,4 @@
+// Copyright 2014 lsich.com
 #include "PersonalAccount.h"
 #include <cstdio>
 #include <string>

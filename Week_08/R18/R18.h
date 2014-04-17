@@ -12,6 +12,7 @@ class R18 {
     void date_a_girl(const int &name);
     string girls_dated() const;
  private:
+    static R18 inst;
     string dated;
 };
 #endif
