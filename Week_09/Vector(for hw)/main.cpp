@@ -3,13 +3,13 @@
 #include <cstdio>
 #include "vector.cpp"
 #define N 1000000007
- 
+
 using std::cout;
 using std::cin;
 using std::endl;
- 
+
 int main() {
-    freopen("in.txt", "r", stdin);
+    // freopen("in.txt", "r", stdin);
     Vector<int> v1;
     int n;
     cin >> n;
@@ -27,6 +27,8 @@ int main() {
     v2.pop_back();
     cout << v2;
     if (n) {
+        cout << v1.size() << " " << v2.size()+1 << endl;
+        cout << (v1.size() == v2.size()+1) << endl;
         assert(v1.size() == v2.size()+1);
     } else {
         assert(v1.empty());
