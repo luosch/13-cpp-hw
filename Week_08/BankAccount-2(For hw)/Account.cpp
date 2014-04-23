@@ -35,7 +35,7 @@ void Account::reset() {
     _balance = 0;
 }
 void Account::settlement() {
-    _balance*=1.02;    
+    _balance*=1.02;
 }
 bool Account::deposit(const double &num) {
     if (num >= 0) {

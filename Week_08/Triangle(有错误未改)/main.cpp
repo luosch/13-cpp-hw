@@ -5,7 +5,6 @@
 using std::cin;
 using std::cout;
 using std::endl;
- 
 int main() {
     int a, b, c;
     cin >> a >> b >> c;
@@ -30,6 +29,5 @@ int main() {
     iso -> print();
     rig -> print();
     ist -> print();
- 
-  return 0;
+    return 0;
 }

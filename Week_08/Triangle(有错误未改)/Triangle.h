@@ -1,11 +1,11 @@
-// Copyright 2014 lsich.com
+﻿// Copyright 2014 lsich.com
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 #include <iostream>
 #include <cmath>
 using std::cout;
 using std::endl;
-void ssort(const int &a, const int &b, const int &c) {
+void ssort(int &a, int &b, int &c) {
     int tmp;
     if (a > b) {
         tmp = a;
