@@ -40,7 +40,7 @@ Vector<T>& Vector<T>::operator =(const Vector<T>& v) {
     this->_size = v._size;
     this->data = new T[this->maxSize];
     for (int i = 0; i < v._size; i++) {
-        *(this->data+i) = *(v.data+i);
+        *(this->data+i) = v.data[i];
     }
     return *this;
 }
@@ -66,5 +66,5 @@ ostream& operator << (ostream &out, const Vector<sT> &v) {
     return out;
 }
 template<typename T>
-T& Vector<T>::operator[](int indexx) {return this->data[indexx];}
+T& Vector<T>::operator[](int indexx){return this->data[indexx];}
 template class Vector<int>;
