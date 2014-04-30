@@ -32,15 +32,15 @@ class Matrix {
                 if ( add(i) )
                     return;
         }
-        void update2() {  // add a 2 to a random position
-            srand((unsigned)time(NULL));
-            unsigned int seed;
-            while (true) {
-                int n = rand_r(&seed) % (rows*cols);
-                if (add(n))
-                    return;
-            }
-        }
+        // void update2() {  // add a 2 to a random position
+            // srand((unsigned)time(NULL));
+            // unsigned int seed;
+            // while (true) {
+                // int n = rand_r(&seed) % (rows*cols);
+                // if (add(n))
+                    // return;
+            // }
+        // }
  
     private:
         int num[rows][cols];

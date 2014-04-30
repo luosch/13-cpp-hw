@@ -1,11 +1,13 @@
 #include <iostream>
+#include <cstdio>
 #include <time.h>
 #include "Matrix.h"
-#include <curses.h>
+// #include <curses.h>
  
 using std::cout;
 using std::cin;
 int main() {
+    // freopen("in.txt", "r", stdin);
     Matrix m(0, 13);
     cout << m;
  
@@ -30,7 +32,7 @@ int main() {
         }
         if (flag)  // if the matrix changes, add a 2 to the matrix
             m.update1();
-        // system("Cls");
+        system("Cls");
         cout << m;
     }
     return 0;
