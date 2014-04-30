@@ -2,6 +2,7 @@
 #ifndef COMPLEX_H
 #define COMPLEX_H
 #include <iostream>
+#include <string>
 using std::string;
 using std::ostream;
 using std::istream;
