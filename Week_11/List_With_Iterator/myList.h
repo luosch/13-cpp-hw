@@ -184,14 +184,14 @@ class list {
             out << x.ptr;
             return out;
         }
-
+ 
      private:
         listelem* ptr;
     };
-
+ 
  private:
     size_t _size;
     iterator _head, _tail;
 };
-
+ 
 #endif
