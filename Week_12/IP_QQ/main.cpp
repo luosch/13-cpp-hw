@@ -11,7 +11,6 @@ using std::pair;
 using std::string;
 using std::multimap;
 int main() {
-    freopen("in.txt", "r", stdin);
     int n, ss, exist;
     string qq, ip;
     multimap<string, string> mm, nn;
@@ -27,6 +26,7 @@ int main() {
                 exist = 1;
                 break;
             }
+            iter++;
         }
         if (!exist) mm.insert(pair<string, string>(qq, ip));
         exist = 0;
@@ -37,19 +37,40 @@ int main() {
                 exist = 1;
                 break;
             }
+            iter++;
         }
         if (!exist) nn.insert(pair<string, string>(ip, qq));
     }
+    exist = 0;
     cin >> ip;
-    cout << ip << " ==> [ ";
     for (iter = mm.begin(); iter != mm.end(); iter++) {
-        if (iter->second == ip) cout << iter->first << ' ';
+        if (iter->second == ip) {
+            exist = 1;
+        }
     }
-    cout << "]" << endl;
+    if (exist) {
+        cout << ip << " ==> [ ";
+        for (iter = mm.begin(); iter != mm.end(); iter++) {
+            if (iter->second == ip) {
+                cout << iter->first << ' ';
+            }
+        }
+        cout << "]" << endl;
+    } else {
+        cout << "no qq" << endl;
+    }
+    exist = 0;
     cin >> qq;
-    cout << qq << " ==> [ ";
     for (iter = nn.begin(); iter != nn.end(); iter++) {
-        if (iter->second == qq) cout << iter->first << ' ';
+        if (iter->second == qq) exist = 1;
     }
-    cout << "]" << endl;
+    if (exist) {
+        cout << qq << " ==> [ ";
+        for (iter = nn.begin(); iter != nn.end(); iter++) {
+            if (iter->second == qq) cout << iter->first << ' ';
+        }
+        cout << "]" << endl;
+    } else {
+        cout << "no ip" << endl;
+    }
 }
