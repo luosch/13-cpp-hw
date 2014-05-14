@@ -3,6 +3,8 @@
 bool check(int, int, int[]);
 
 int main() {
+    freopen("in.txt", "r", stdin);
+    freopen("out.txt", "w", stdout);
     int T, n, m;
     scanf("%d", &T);
     while (T--) {
@@ -10,6 +12,8 @@ int main() {
         int queue[2000], head = 0, rear = n-1, pos = 0, time = 0;
         for (int i = 0; i < n; i++) scanf("%d", &queue[i]);
         while (!(pos == m && check(pos, rear, queue))) {
+            for (int i = head; i < rear; i++) printf("%d ", queue[i]);
+            printf("\n");
             if (check(pos, rear, queue)) {
                 head++;
                 time++;
