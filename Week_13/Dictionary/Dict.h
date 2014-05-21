@@ -41,7 +41,11 @@ class Dict {
     }
     void restrict() {
         for (auto i = __dictionary.begin(); i != __dictionary.end(); i++) {
-            if (i->second == "*** not in dictionary") __dictionary.erase(i);
+            if (i->second == "*** not in dictionary") {
+                auto j = i;
+                __dictionary.erase(j);
+                break;
+            }
         }
     }
 

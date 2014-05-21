@@ -7,8 +7,8 @@ bool check(int num[][1000], int row, const int &tar) {
     int X = row-1, Y = 0;
     while (valid(X, Y, row)) {
         if (tar > num[X][Y]) Y++;
-        if (tar < num[X][Y]) X--;
-        if (tar == num[X][Y]) return 1;
+        else if (tar < num[X][Y]) X--;
+        else if (tar == num[X][Y]) return 1;
     }
     return 0;
 }

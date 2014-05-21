@@ -2,7 +2,15 @@
 #ifndef SOURCE_H
 #define SOURCE_H
 #include "Taobao.h"
+#include <algorithm>
+using std::sort;
 typedef TaoBaoItem TBI;
+bool cmp1(const TBI &a, const TBI &b) {
+    return a.price > b.price;
+}
+bool cmp2(const TBI &a, const TBI &b) {
+    return a.volume_of_sales > b.volume_of_sales;
+}
 inline void swap(TBI *a, TBI *b) {
     int __pri = a->price;
     int __vos = a->volume_of_sales;
@@ -15,26 +23,14 @@ inline void swap(TBI *a, TBI *b) {
 class SortByPrice: public SortInterface {
  public:
     void DoSort(TBI __item[], int __size) {
-        for (int i = 0; i < __size; i++) {
-            for (int j = i+1; j < __size; j++) {
-                if (__item[i].price < __item[j].price) {
-                    swap(__item+i, __item+j);
-                }
-            }
-        }
+        sort(__item, __item+__size, cmp1);
     }
 };
 
 class SortBySales: public SortInterface {
  public:
     void DoSort(TBI __item[], int __size) {
-        for (int i = 0; i < __size; i++) {
-            for (int j = i+1; j < __size; j++) {
-                if (__item[i].volume_of_sales < __item[j].volume_of_sales) {
-                    swap(__item+i, __item+j);
-                }
-            }
-        }
+        sort(__item, __item+__size, cmp2);
     }
 };
 

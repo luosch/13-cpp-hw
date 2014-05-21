@@ -6,10 +6,10 @@ using std::map;
 using std::string;
 class Array {
  public:
-    int& operator [](const int &_index) {
+    int& operator[](const int &_index) {
         return __numberArray[_index];
     }
-    int& operator [](const string &_index) {
+    int& operator[](const string &_index) {
         return __stringArray[_index];
     }
 
