@@ -12,7 +12,6 @@ void swap_practice(const __T &__a, const __T &__b) {
 template <typename __T>
 void inc(const __T &__input) {
     ++(const_cast<__T&>(__input));
-    // ++__input;
 }
 template <typename __T>
 void dec(const __T &__input) {
