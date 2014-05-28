@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
   for (int i = 0; i < 4; i++) {
       cin >> item[i].price >> item[i].volume_of_sales;
   }
- 
+
   SortByPrice price;
   SortBySales sales;
  
