@@ -15,6 +15,9 @@ Queue<T>::Queue() {
 }
 template <class T>
 Queue<T>::~Queue() {
+    while (frontBlock_->prev) {
+        frontBlock_ = frontBlock_->prev;
+    }
     MemBlock<T> *tmp = frontBlock_;
     while (tmp) {
         tmp = tmp->next;
@@ -64,12 +67,15 @@ template <class T>
 void Queue<T>::appendBlock() {
     MemBlock<T> *tmp = new MemBlock<T>;
     tmp->next = 0;
-    backBlock_->next = tmp;
     tmp->prev = backBlock_;
+    backBlock_->next = tmp;
     backBlock_ = tmp;
 }
 template <class T>
 void Queue<T>::clear() {
+    while (frontBlock_->prev) {
+        frontBlock_ = frontBlock_->prev;
+    }
     MemBlock<T> *tmp = frontBlock_;
     while (tmp) {
         tmp = tmp->next;
