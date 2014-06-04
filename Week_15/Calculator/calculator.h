@@ -1,4 +1,4 @@
-// Copyright 2014 lsich
+// Copyright 2014 lsich.com
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
 #include <stack>
@@ -13,6 +13,19 @@ using std::ostream;
 using std::cin;
 using std::cout;
 using std::endl;
+inline int prop(char x) {
+    if (x == '(') return 1;
+    if (x == ')') return 2;
+    if (x == '+' || x == '-') return 3;
+    if (x == '*' || x == '/' || x == '%') return 4;
+}
+inline int arithmetic(int a, int b, char op) {
+    if (op == '+') return a+b;
+    if (op == '-') return a-b;
+    if (op == '*') return a*b;
+    if (op == '/') return a/b;
+    if (op == '%') return a%b;
+}
 struct expression {
     int num;
     char oper;
@@ -28,19 +41,22 @@ class Calculator {
  public:
     int getResult(const string &input) {
         int _num = 0, _len = input.length();
-        char _oper;
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < _len; i++) {
             if (input[i] >= '0' && input[i] <= '9') {
                 _num = _num*10+input[i]-'0';
-                nifix.push_back(expression(_num, 0, "number"));
             } else {
+                nifix.push_back(expression(_num, 0, "number"));
+                nifix.push_back(expression(0, input[i], "operator"));
                 _num = 0;
-                nifix.push_back(expression(0, _oper, "operator"));
             }
         }
+        if (_num) nifix.push_back(expression(_num, 0, "number"));
+        trans();
+        cal();
+        return answer;
     }
-    void transfer();
-    void calculate();
+    void trans();
+    void cal();
 
  private:
     vector<expression> nifix;
@@ -48,20 +64,7 @@ class Calculator {
     int answer;
 };
 
-inline int prop(char x) {
-    if (x == '(') return 1;
-    if (x == ')') return 2;
-    if (x == '+' || x == '-') return 3;
-    if (x == '*' || x == '/' || x == '%') return 4;
-}
-inline int arithmetic(int a, int b, char op) {
-    if (op == '+') return a+b;
-    if (op == '-') return a-b;
-    if (op == '*') return a*b;
-    if (op == '/') return a/b;
-    if (op == '%') return a%b;
-}
-void MidToLast::transfer() {
+void Calculator::trans() {
     int size = nifix.size();
     stack<char> op;
     for (int i = 0; i < size; i++) {
@@ -90,7 +93,7 @@ void MidToLast::transfer() {
         op.pop();
     }
 }
-void MidToLast::calculate() {
+void Calculator::cal() {
     stack<int> S;
     int size = postfix.size();
     for (int i = 0; i < size; i++) {
