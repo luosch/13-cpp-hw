@@ -42,7 +42,6 @@ inline void bfs() {
     }
 }
 int main() {
-    freopen("in.txt", "r", stdin);
     scanf("%d %d", &n, &m);
     for (int i = 0; i < n; i++) scanf("%s", maze[i]);
     for (int i = 0; i < n; i++)

@@ -11,7 +11,7 @@ using std::string;
 using std::cin;
 using std::cout;
 using std::endl;
-multiset<string> lsich;
+set<string> lsich;
 void add(string tmp) {
     transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
     lsich.insert(tmp);
