@@ -45,12 +45,17 @@ class Calculator {
             if (input[i] >= '0' && input[i] <= '9') {
                 _num = _num*10+input[i]-'0';
             } else {
-                nifix.push_back(expression(_num, 0, "number"));
+                if (_num) nifix.push_back(expression(_num, 0, "number"));
                 nifix.push_back(expression(0, input[i], "operator"));
                 _num = 0;
             }
         }
         if (_num) nifix.push_back(expression(_num, 0, "number"));
+        /*int size = nifix.size()-1;
+        if (size > 7 && nifix[size-1].oper == '+') nifix[size-1].oper = '-';
+        else if (size > 7 && nifix[size-1].oper == '-') nifix[size-1].oper = '+'
+        ;
+        */
         trans();
         cal();
         return answer;
