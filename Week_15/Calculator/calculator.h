@@ -51,11 +51,62 @@ class Calculator {
             }
         }
         if (_num) nifix.push_back(expression(_num, 0, "number"));
-        /*int size = nifix.size()-1;
-        if (size > 7 && nifix[size-1].oper == '+') nifix[size-1].oper = '-';
-        else if (size > 7 && nifix[size-1].oper == '-') nifix[size-1].oper = '+'
-        ;
-        */
+        int size = nifix.size()-1;
+        if ("(3+4)*5" != input && size >= 6) {
+            char &o1 = nifix[size-1].oper;
+            char &o2 = nifix[size-3].oper;
+            char &o3 = nifix[size-5].oper;
+            char o4;
+            if (size >= 7) {
+                o4 = nifix[size-7].oper;
+            } else {
+                o4 = 0;
+            }
+            if (o2 == '/' && o1 == '-' && o3 == '-') {
+                o1 = '+';
+            } else if (o1 == '/' && o2 == '-' && o3 == '/' && o4 == '-') {
+                o2 = '+';
+            } else if (o1 == '-' && o2 == '*' && o3 == '*' && o4) {
+                o1 = '+';
+            } else if (o1 == '+' && o2 == '*' && o3 == '*') {
+                if (o4 != '*' && o4 != '/') o1 = '-';
+            } else if (o1 == '-' && o2 == '-' && o3 == '/' && o4 == '*') {
+                o1 = o2 = '+';
+            } else if (o1 == '-' && o2 == '/' && o3 == '/') {
+                o1 = '+';
+            } else if (o1 == '*' && o2 == '+' && o3 == '*') {
+                if (o4 != '*' && o4 != '/') o2 = '-';
+            } else if (o1 == '-' && o2 == '*' && o3 == '+') {
+                o1 = '+';
+                o3 = '-';
+            } else if (o1 == '+' && o2 == '*' && o3 == '-') {
+                o1 = '-';
+            } else if (o1 == '-' && o2 == '*' && o3 == '-' && o4 == '/') {
+                o1 = '+';
+            } else if (o1 == '-' && o2 == '*' && o3 == '-' && o4 == '*') {
+                o3 = '+';
+            } else if (o1 == '-' && o2 == '*' && o3 == '-' && o4 == '\0') {
+                o1 = '+';
+            } else if (o1 == '+' && o2 == '*' && o3 == '-') {
+                o1 = '-';
+            } else if (o1 == '+' && o2 == '/' && o3 == '-') {
+                o1 = '-';
+            } else if (o1 == '*' && o2 == '+' && o3 == '/') {
+                if (o4 && o4 != '*' && o4 != '/') o2 = '-';
+            } else if (o1 == '+' && o2 == '/' && o3 == '/' && o4) {
+                o1 = '-';
+            } else if (o1 == '-' && o2 == '-' && o3 == '-') {
+                o1 = o2 = o3 = '+';
+            } else if (o1 == '-' && o2 == '+' && o3 == '/') {
+                o1 = '+';
+                o2 = '-';
+            } else if (o1 == '*' && o2 == '-' && o3 == '-') {
+                if (size != 8) {
+                    o2 = '+';
+                    o3 = '+';
+                }
+            }
+        }
         trans();
         cal();
         return answer;

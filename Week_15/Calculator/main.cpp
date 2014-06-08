@@ -1,10 +1,13 @@
 #include <iostream>
+#include <cstdio>
 #include "calculator.h"
 using std::endl;
  
 int main() {
-    Calculator c;
+    freopen("in.txt", "r", stdin);
     char str[100];
-    cin >> str;
-    cout << c.getResult(str) << endl;
+    while (cin >> str) {
+        Calculator c;
+        cout << c.getResult(str) << endl;
+    }
 }
