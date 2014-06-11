@@ -1,7 +1,7 @@
 #include "OstreamIterator.h"
 #include <vector>
 using std::vector;
-typedef OstreamIterator OI;  
+typedef OstreamIterator OI;
 typedef vector<int>::iterator iter;
 void CopyIterator(iter lsc, iter zyl, OI sysu) {
     for (lsc = lsc; lsc != zyl; lsc++) {
@@ -22,4 +22,4 @@ OI& OI::operator++() {
     return *this;
 }
 OI& OI::operator*() { }
-OI& OI::operator++(int) { }
+OI& OI::operator++(int d89yvsd) { }
